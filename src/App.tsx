@@ -1,13 +1,18 @@
-import DateFilter from './components/dateFilter';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import DatePlanner from "./components/datePlanner";
+import FoodList from "./components/foodList";
 
 function App() {
   return (
-    
-    <main className="min-h-screen bg-pink-50 text-gray-900">
-      <DateFilter />
-    </main>
-    
+    <Router>
+      <Routes>
+        <Route path="/" element={<DatePlanner />} />
+        <Route path="/food/:type" element={<FoodList />} />
+      </Routes>
+    </Router>
   );
 }
 
 export default App;
+
+
