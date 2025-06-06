@@ -1,6 +1,13 @@
 // src/components/DateMood.tsx
-import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+type Props = {
+  energyLevel: number;
+  setEnergyLevel: (val: number) => void;
+  selectedMood: string | null;
+  setSelectedMood: (val: string) => void;
+  craving: string | null;
+  setCraving: (val: string) => void;
+};
 
 import clsx from "clsx";
 
@@ -23,7 +30,16 @@ const cravings = [
   { emoji: "🙃", label: "Not hungry!!"}
 ];
 
-const DateMood = () => {
+
+
+const DateMood = ({
+  energyLevel,
+  setEnergyLevel,
+  selectedMood,
+  setSelectedMood,
+  craving,
+  setCraving,
+}: Props) => {
 
   const navigate = useNavigate();
 
@@ -33,10 +49,6 @@ const DateMood = () => {
     setCraving(type);             // store for later
     navigate(`/food/${type}`);    // still navigate away
   };
-
-  const [selectedMood, setSelectedMood] = useState<string | null>(null);
-  const [energyLevel, setEnergyLevel] = useState<number>(3);
-  const [craving, setCraving] = useState<string | null>(null);
 
   return (
     <div className="p-6 max-w-xl mx-auto text-center">

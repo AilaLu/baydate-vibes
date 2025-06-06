@@ -1,5 +1,12 @@
+type Props = {
+ duration: "short" | "medium" | "long";
+ setDuration: (val: "short" | "medium" | "long") => void;
+ selectedVibe: string | null;
+ setSelectedVibe: (val: string) => void;
+ wantsToMove: boolean | null;
+ setWantsToMove: (val: boolean) => void;
+};
 // src/components/DateTimeVibe.tsx
-import { useState } from "react";
 import clsx from "clsx";
 
 const vibes = [
@@ -9,10 +16,17 @@ const vibes = [
   { emoji: "🌆", label: "Evening" },
 ];
 
-const DateTimeVibe = () => {
-  const [selectedVibe, setSelectedVibe] = useState<string | null>(null);
-  const [duration, setDuration] = useState<"short" | "medium" | "long">("medium");
-  const [wantsToMove, setWantsToMove] = useState<boolean | null>(null);
+
+
+const DateTimeVibe = ({
+ duration,
+ setDuration,
+ selectedVibe,
+ setSelectedVibe,
+ wantsToMove,
+ setWantsToMove,
+}: Props) => {
+
 
   return (
     <div className="p-6 max-w-xl mx-auto text-center">
